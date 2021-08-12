@@ -1,0 +1,54 @@
+<div class="navbarClass" style="margin-top:49px !important;">
+	<div id="mainnav" style="margin-top:-11px;margin-left:25px;">	
+		<ul id="idul">	
+			<li style="display:inline" onclick="onClickOfTab('NewRequest')"> <a id="aid1"> New Request <span id="idSpan1"> 12 </span> </a> </li>	
+			<li style="display:inline" onclick="onClickOfTab('Pending')"> <a id="aid2"> Pending <span id="idSpan2"> 60 </span></a></li>	
+			<li style="display:inline" onclick="onClickOfTab('Submitted')"> <a id="aid3"> Submitted <span id="idSpan3"> 12 </span></a></li>	
+			<li style="display:inline" onclick="onClickOfTab('Approved')"> <a id="aid4"> Approved <span id="idSpan4"> 60 </span></a></li>	
+			<li style="display:inline" onclick="onClickOfTab('Rejected')"> <a id="aid5" style="margin-top:-9px";> Rejected <span id="idSpan5"> 6 </span></a></li>	
+		</ul>
+	</div>
+</div>
+
+<script>$("#idSpan1").addClass("spanClass");$("#idSpan2").addClass("spanClass");$("#idSpan3").addClass("spanClass");$("#idSpan4").addClass("spanClass");
+		$("#idSpan5").addClass("spanClass");$("#aid1").addClass("liClass");$("#aid2").addClass("liClass");$("#aid3").addClass("liClass");$("#aid4").addClass("liClass");$("#aid5").addClass("liClass");
+		$("#idul").addClass("ulClass"); $("#aid1").addClass("btnClass");
+			
+</script>
+
+<style>
+
+.navbarClass
+{position:absolute; width:100%;height:66px;position:fixed !important;z-index:9 !important;margin:0 !important;top:0 !important;left:0 !important;display: inline;overflow: hidden;background-color:#FDC300;}
+
+.spanClass{display:none;position:relative;margin-top:-3px; margin-left: 5px !important;background-color: #f9f9f9; padding: 7px;border-radius: 30px;border: none;height: 20px;line-height: 20px;font-size: 14px !important;color: #606568 !important;}
+
+.liClass{height: 41px;width: 13%;line-height: 40px;display: block;margin-top:5px;font-family: Arial, Helvetica, sans-serif; font-size: 18px; color: #fff !important; text-decoration: none;float: left; text-align: center;display: block; list-style-type: none; clear: none; margin: 4px;}
+
+.ulClass {list-style-type: none;margin: 0px;padding: 0px;}
+
+.btnClass {background-color: #fff !important; color: #000 !important}
+
+#mainnav a:hover,#mainnav a:active,#mainnav a:focus {color: #000 !important;text-decoration: none;background-color: #fff;} 
+#mainnav a:hover span, #mainnav a:active span, #mainnav a:focus span{ background-color:#FDC300 !important; color: #fff !important; } 
+a:visited {color:#25399f;background-color:#25399f;} 
+#mainnav a:visited span{background-color:#000 !important; color: #333 !important;}
+
+</style>
+
+
+ <script>	function onClickOfTab(name) {var btnName = name; var xpath = 'Controllers/Controller/Controls/Control[@Name=\"hdnTabType\"]'; 
+		var windowToUse = window; if (!checkExists(windowToUse.viewControllerDefinition)) 
+		{ windowToUse.viewControllerDefinition = $xml(windowToUse.__runtimeControllersDefinition); } 
+		var control = windowToUse.$sn(windowToUse.viewControllerDefinition, xpath); 
+		var controlInfoObj = new windowToUse.PopulateObject(null, name, control.getAttribute('ID')); 
+		windowToUse.executeControlFunction(control, 'SetValue', controlInfoObj); windowToUse.raiseEvent (control.getAttribute('ID'), 'Control', 'OnChange'); 
+		ActiveInactiveTabButtons(btnName);} 
+		function ActiveInactiveTabButtons(btnName){
+		$("#mainnav").find("a").removeClass("btnClass");	
+		if(btnName=="NewRequest"){$("#aid1").addClass("btnClass")};	
+		if(btnName=="Pending"){$("#aid2").addClass("btnClass")};	
+		if(btnName=="Submitted"){$("#aid3").addClass("btnClass")};	
+		if(btnName=="Approved"){$("#aid4").addClass("btnClass")};	
+		if(btnName=="Rejected"){$("#aid5").addClass("btnClass")};} 
+</script>
